@@ -1,0 +1,87 @@
+body{
+    background: url("../IMAGES/mentors-transparent-680716-2639180.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgb(255, 255, 255);
+    min-height: 71.6vh;
+}
+
+.wrap{
+    max-width: 350px;
+    border-radius: 20px;
+    margin: 8em auto;
+    background: rgba(240, 240, 240, 0.7);
+    box-sizing: border-box;
+    padding:40px;
+    color: #fff;
+    transform: translate(10px,10px);
+    transition: all .6s ease-in-out;
+    border: 1.5px solid orange;
+}
+.wrap.login{
+    margin: 13em auto 3em !important;
+}
+
+h2{
+    text-align: center;
+    font-size: 27px;
+    color: black;
+}
+
+input[type=text],input[type=password]{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 5px;
+    background: none;
+    outline: none;
+    border: none;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #ba7b08;
+    color: rgb(100, 99, 99);
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+input[type=text]:hover,input[type=password]:hover{
+    border-bottom: 2px solid orange;
+    
+}
+
+input[type=submit]{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0;
+    margin-top: 30px;
+    outline: none;
+    border: none;
+    background: orange;
+    opacity: 0.9;
+    border-radius: 20px;
+    font-size: 20px;
+    color:white;
+    font-weight: 600;
+}
+
+input[type=submit]:hover{
+    background: rgb(179, 165, 165);
+    color: black;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.9s ease 0s;
+}
+
+.link_connect{
+    text-align: center;
+    margin: 25px 0;
+    color: rgb(122, 115, 115);
+}
+
+.log_here{
+    padding: 5px 0;
+    color: rgb(77, 74, 74);
+}
+
+.log_here:hover{
+    color: rgb(116, 45, 45);
+}
