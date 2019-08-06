@@ -10,17 +10,17 @@ body{
 .wrap{
     max-width: 350px;
     border-radius: 20px;
-    margin: 8em auto;
+    margin: 4em auto;
     background: rgba(240, 240, 240, 0.7);
     box-sizing: border-box;
-    padding:40px;
+    padding:0 40px;
     color: #fff;
     transform: translate(10px,10px);
     transition: all .6s ease-in-out;
     border: 1.5px solid orange;
 }
 .wrap.login{
-    margin: 13em auto 3em !important;
+    padding: 14px;
 }
 
 h2{
