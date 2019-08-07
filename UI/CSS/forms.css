@@ -10,22 +10,23 @@ body{
 .wrap{
     max-width: 350px;
     border-radius: 20px;
-    margin: 8em auto;
+    margin: 50px auto;
     background: rgba(240, 240, 240, 0.7);
     box-sizing: border-box;
-    padding:40px;
+    padding: 0 40px;
     color: #fff;
     transform: translate(10px,10px);
     transition: all .6s ease-in-out;
     border: 1.5px solid orange;
 }
 .wrap.login{
-    margin: 13em auto 3em !important;
+    margin: 6em auto !important;
+    padding: 2px;
 }
 
 h2{
     text-align: center;
-    font-size: 27px;
+    font-size: 20px;
     color: black;
 }
 
@@ -41,6 +42,7 @@ input[type=text],input[type=password]{
     color: rgb(100, 99, 99);
     border-radius: 5px;
     font-weight: bold;
+    cursor: inherit;
 }
 
 input[type=text]:hover,input[type=password]:hover{
