@@ -477,8 +477,13 @@ nav ul li a:hover{
 
     .show-desktop{
         display: block;
-        margin: 0 auto 13% auto;
+        margin: 0 auto 20% auto;
         transition: all 0.9s ease 0s;
+        position: fixed;
+        border-bottom: 1px solid orange;
+        background-color: #fff;
+        border-radius: 20px;
+        right: 75px;
     }
 
     .hide-desktop{
@@ -496,15 +501,17 @@ nav ul li a:hover{
 
     nav ul li{
         float: left;
+        position: relative;
+        left: -42px;
     }
 
     nav ul li a {
         background-color: inherit;
         color: black;
         text-align: right;
-        padding: 1em 0;
-        margin: 30px;
-    }
+        padding: 2px 8px;
+        margin: 14px;
+        }
 
     nav ul li a:hover{
         background-color: inherit;
