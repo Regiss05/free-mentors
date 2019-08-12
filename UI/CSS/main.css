@@ -379,7 +379,7 @@ nav ul li a:hover{
     margin-top: -32px;
     padding: 30px;
 }
-  
+
   /* Add animation (fade in the popup) */
   @-webkit-keyframes fadeIn {
     from {opacity: 0;} 
