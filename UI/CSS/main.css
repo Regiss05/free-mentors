@@ -379,7 +379,6 @@ nav ul li a:hover{
     margin-top: -32px;
     padding: 30px;
 }
-  
   /* Add animation (fade in the popup) */
   @-webkit-keyframes fadeIn {
     from {opacity: 0;} 
@@ -397,6 +396,11 @@ nav ul li a:hover{
 
     .user_request {
         margin: 5px;
+    }
+
+    .scroll{
+        width: 5em;
+        animation: move 1s  infinite alternate;
     }
 }
 /*media query*/
@@ -453,7 +457,7 @@ nav ul li a:hover{
 
 @media only screen and (min-width: 875px) {
     .subhead{
-        margin-bottom: 15%;
+        margin-bottom: 7%;
     }
 
     .blue-container ul{
@@ -463,6 +467,7 @@ nav ul li a:hover{
     .gray-container ul{
         margin: 4% 0 0;
     }
+    
 }
 
 @media only screen and (min-width: 1024px) {
@@ -480,9 +485,10 @@ nav ul li a:hover{
         margin: 0 auto 20% auto;
         transition: all 0.9s ease 0s;
         position: fixed;
-        border-bottom: 1px solid orange;
+        border-bottom: 1px dashed orange;
         background-color: #fff;
-        border-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
         right: 75px;
     }
 
@@ -520,6 +526,7 @@ nav ul li a:hover{
     .scroll{
         width: 5em;
         animation: move 1s  infinite alternate;
+        margin-bottom: 6%;
     }
 
     @keyframes move {
