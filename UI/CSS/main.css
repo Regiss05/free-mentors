@@ -363,47 +363,6 @@ nav ul li a:hover{
     transition: all 0.9s ease 0s;
     color: white
 }
-/* Popup container */
-.popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-  }
-  
-  /* The actual popup (appears on top) */
-  .popup .popuptext {
-    visibility: hidden;
-    width: 160px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -80px;
-  }
-  
-  /* Popup arrow */
-  .popup .popuptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-  }
-  
-  /* Toggle this class when clicking on the popup container (hide and show the popup) */
-  .popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s
-  }
 
   .enjoy_site{
       font-weight: 500;
@@ -540,10 +499,11 @@ nav ul li a:hover{
     }
 
     nav ul li a {
-        color: black;
         background-color: inherit;
+        color: black;
         text-align: right;
-        padding: 1em 2em;
+        padding: 1em 0;
+        margin: 30px;
     }
 
     nav ul li a:hover{
