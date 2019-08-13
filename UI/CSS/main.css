@@ -485,7 +485,7 @@ nav ul li a:hover{
         margin: 0 auto 20% auto;
         transition: all 0.9s ease 0s;
         position: fixed;
-        border-bottom: 1px dashed orange;
+        border-bottom: 1px solid orange;
         background-color: #fff;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
