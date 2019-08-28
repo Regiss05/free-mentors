@@ -19,15 +19,12 @@ Free Mentors is a social initiative where accomplished professionals become role
 | / | GET | 200 OK | Helps users to access to the root of the api |
 | /auth/signup | POST | 201 Created | Makes a post request to register a new user or create an account |
 | /auth/signin | POST | 200 OK | Sign in the user already having a user account |
-| /trips | POST | 201 OK | Create a trips on which users can book seats |
-| /trips/:trip-id | GET | 200 OK | For users to view all available trips |
-| /trips/:trip-id | GET | 200 OK | For users to view a specific trip |
-| /trips/:trip-id/cancel | PATCH | 200 OK | For the admin to cancel a trip |
-| /trips/bookings | POST | 201 OK | For the the users to book a seat |
-| /trips/bookings | GET | 200 OK | For both admin and users to view bookings  |
-| /bookings/:booking-id | DELETE | 200 OK | For both admin and users to delete a specific booking |
-| /filter/trips | GET | 200 OK | For users to filter available trips based on origin or destination |
-
+| /User | POST | 201 OK | Create a mentorship session which mentor can decide |
+| /Free-Mentor/:mentor-id | GET | 200 OK | For users to view all available mentors |
+| /Free-Mentor/:mentor-id | GET | 200 OK | For users to view a specific user |
+| /Free-Mentor/:mentor-id/cancel | PATCH | 200 OK | For the admin to cancel a mentorship session requrest |
+| /Free-Mentor/session | POST | 201 OK | For the the users to book a seat |
+| /Free-Mentor/session | GET | 200 OK | For both admin and users to view mentors  |
 
 ## Tools
 
