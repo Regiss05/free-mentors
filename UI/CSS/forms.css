@@ -55,6 +55,30 @@ input[type=text]:hover,input[type=password]:hover{
     
 }
 
+.btn-lg-sn{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 76px;
+    margin-top: 30px;
+    outline: none;
+    border: none;
+    background: orange;
+    opacity: 0.9;
+    border-radius: 20px;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-lg-sn:hover{
+    background: rgb(179, 165, 165);
+    color: black;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.9s ease 0s;
+}
+
 input[type=submit]{
     width: 100%;
     box-sizing: border-box;
