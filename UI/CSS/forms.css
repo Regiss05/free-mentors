@@ -11,8 +11,9 @@ body{
     max-width: 350px;
     border-radius: 20px;
     margin:100px auto;
+    background: rgba(240, 240, 240, 0.75);
     margin: 4em auto;
-    background: rgba(240, 240, 240, 0.7);
+  
     box-sizing: border-box;
     padding:0 40px;
     margin: 50px auto;
