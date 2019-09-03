@@ -259,9 +259,10 @@ ul.footer-links li a{
 }
 
 .mentor_size:hover{
+    cursor: pointer; 
     transition: all 0.9s ease 0s;
     padding-left: 60px;
-    cursor: pointer; 
+    
 }
 
 .photo_manioulator{
