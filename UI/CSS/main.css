@@ -31,7 +31,10 @@ ul{
 }
 
 .logo{
-    width: 130px;
+    width: 160px;
+    
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;    
 }
 
 .hide-mobile{
@@ -45,6 +48,9 @@ ul{
 header{
     display: flex;
     justify-content: space-between; 
+    position: fixed;
+    top: 0;
+    z-index: 5;
 }
 
 .menu{
@@ -101,6 +107,7 @@ h1, .subhead{
 }
 
 .title-ment{
+    font-size: 20px;
     font-weight: 900;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -292,11 +299,15 @@ input {
     padding: 15px;
     background-color: rgba(243, 239, 239, 0.5);
 }
-nav ul{
+nav {
     position: fixed;
-    width: 60%;
     top: 0;
     right: 0;
+}
+nav ul{
+    
+    width: 60%;
+    
     text-align: left;
     background: rgb(36, 41, 44); 
     height: 100%;
@@ -309,7 +320,6 @@ nav ul li a{
     color: #fff;
     text-decoration: none;
     display: block;
-    width: 100%;
     padding: 1em 2em;
     background-color: rgb(49, 55, 59);
     transition: all 0.9s ease  0s;
@@ -379,6 +389,82 @@ nav ul li a:hover{
     margin-top: -32px;
     padding: 30px;
 }
+
+*, *::after, *::before {
+    box-sizing: border-box;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid orange;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 500px;
+    max-width: 80%;
+    z-index: 13;
+  }
+  
+  .modal.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid orange;
+  }
+  
+  .modal-header .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  .modal-header .acc{
+      color: green;
+  }
+
+ .modal-header .sessionDenc{
+      color: red;
+  }
+  
+  .modal-header .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .modal-body {
+    padding: 10px 15px;
+  }
+  
+  #overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+    z-index: 10;
+  }
+  
+  #overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
   /* Add animation (fade in the popup) */
   @-webkit-keyframes fadeIn {
     from {opacity: 0;} 
@@ -508,7 +594,6 @@ nav ul li a:hover{
     nav ul li{
         float: left;
         position: relative;
-        left: -42px;
     }
 
     nav ul li a {
@@ -539,7 +624,7 @@ nav ul li a:hover{
     }
 }
 
-@media only screen and (min-width: 1500px) {
+@media only screen and (min-width: 1400px) {
     .server{
         width: 40%;
         margin: 5em auto 4em 15%;
