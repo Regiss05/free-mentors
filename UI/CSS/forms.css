@@ -12,12 +12,6 @@ body{
     border-radius: 20px;
     margin:100px auto;
     background: rgba(240, 240, 240, 0.75);
-    margin: 4em auto;
-  
-    box-sizing: border-box;
-    padding:0 40px;
-    margin: 50px auto;
-    background: rgba(240, 240, 240, 0.7);
     box-sizing: border-box;
     padding: 0 40px;
     color: #fff;
@@ -27,8 +21,6 @@ body{
 }
 .wrap.login{
     margin: 10em auto !important;
-    padding: 14px;
-    margin: 6em auto !important;
     padding: 2px;
 }
 
