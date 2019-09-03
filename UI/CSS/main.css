@@ -259,8 +259,9 @@ ul.footer-links li a{
 }
 
 .mentor_size:hover{
-    cursor: pointer; 
+    
     transition: all 0.9s ease 0s;
+    cursor: pointer; 
     padding-left: 60px;
     
 }
