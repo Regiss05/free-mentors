@@ -32,6 +32,8 @@ ul{
 
 .logo{
     width: 130px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .hide-mobile{
@@ -45,6 +47,9 @@ ul{
 header{
     display: flex;
     justify-content: space-between; 
+    position: fixed;
+    z-index: 5;
+    top: 0;
 }
 
 .menu{
