@@ -10,6 +10,7 @@ body{
 .wrap{
     max-width: 350px;
     border-radius: 20px;
+    margin:100px auto;
     margin: 4em auto;
     background: rgba(240, 240, 240, 0.7);
     box-sizing: border-box;
@@ -24,6 +25,7 @@ body{
     border: 1.5px solid orange;
 }
 .wrap.login{
+    margin: 10em auto !important;
     padding: 14px;
     margin: 6em auto !important;
     padding: 2px;
