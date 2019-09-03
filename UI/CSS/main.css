@@ -108,6 +108,7 @@ h1, .subhead{
 .title-ment{
     font-weight: 900;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 25px;
 }
 
 .blue-container:before{
