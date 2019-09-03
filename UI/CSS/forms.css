@@ -8,14 +8,14 @@ body{
 }
 
 .wrap{
-    max-width: 350px;
-    border-radius: 20px;
-    margin: 50px auto;
+    padding: 0 40px;
     background: rgba(240, 240, 240, 0.7);
     box-sizing: border-box;
-    padding: 0 40px;
+    max-width: 350px;
+    margin: 50px auto;
     color: #fff;
     transform: translate(10px,10px);
+    border-radius: 20px;
     transition: all .6s ease-in-out;
     border: 1.5px solid orange;
 }
