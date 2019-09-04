@@ -8,8 +8,6 @@ const signup = (req, res) => {
     password, 
     confPassword
   } = req.body;
-
-  //check the mail and the existing one to avoid the conflit
   
   const myuser = new user(
     userObj.length, 
@@ -19,6 +17,7 @@ const signup = (req, res) => {
     password,
     confPassword,
   );
+
   userObj.push( myuser);
   if(myuser){
     res.status(201).send({
