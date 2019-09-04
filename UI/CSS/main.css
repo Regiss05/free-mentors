@@ -31,10 +31,9 @@ ul{
 }
 
 .logo{
-    width: 160px;
-    
+    width: 130px;
     border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;    
+    border-bottom-right-radius: 5px;
 }
 
 .hide-mobile{
@@ -49,8 +48,8 @@ header{
     display: flex;
     justify-content: space-between; 
     position: fixed;
-    top: 0;
     z-index: 5;
+    top: 0;
 }
 
 .menu{
@@ -110,6 +109,7 @@ h1, .subhead{
     font-size: 20px;
     font-weight: 900;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 25px;
 }
 
 .blue-container:before{
@@ -261,9 +261,11 @@ ul.footer-links li a{
 }
 
 .mentor_size:hover{
+    
     transition: all 0.9s ease 0s;
-    padding-left: 60px;
     cursor: pointer; 
+    padding-left: 60px;
+    
 }
 
 .photo_manioulator{
