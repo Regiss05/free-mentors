@@ -3,7 +3,7 @@ import {userObj} from '../models/user';
 const login = (req, res) => {
 
   const {email, password} = req.body;
-  //compare email and password from the data base
+  
   const user = userObj.find(u => u.email === email && u.password === password);
 
   if(user){
