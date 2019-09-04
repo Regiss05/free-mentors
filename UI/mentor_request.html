@@ -9,10 +9,31 @@
     <link rel="stylesheet" href="../UI/CSS/main.css">
 </head>
 <body>
+    <div class="modal" id="modal">
+        <div class="modal-header">
+        <div class="title acc">Request accepted</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            You become a mentor of this user
+        </div>
+    </div>
+
+    <div class="modal" id="modalDec">
+        <div class="modal-header">
+        <div class="title sessionDenc">Request rejected</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            You are no longer a mentor of this user
+        </div>
+    </div>
+
+    <div id="overlay"></div>
+
     <div class="container">
         <header>
-            <a href="index.html"><img src="../UI/IMAGES/FREE-MENTOR_writning.png" alt="mentor" class="logo"></a>
-            <nav>
+                <a href="index.html"><img src="../UI/IMAGES/FREE-MENTOR_writning.png" alt="mentor" class="logo" id="logotop"></a>            <nav>
                 <a href="#" class="hide-desktop">
                     <img src="../UI/IMAGES/ham.svg" alt="toggle menu" class="menu" id="menu">
                 </a>
@@ -20,8 +41,7 @@
                 <ul  class="show-desktop hide-mobile" id="nav">
                     <li id="exit" class="exit-btn hide-desktop"><img src="../UI/IMAGES/exit.svg" alt="exit menu"></li>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="mentorship_In_process.html">Session</a></li>
-                    <li><a href="AllMentors.html">Mentors</a></li>
+                    <li><a href="mentor_request.html">session</a></li>
                     <li><a href="signup.html">logout</a></li>
                 </ul>
             </nav>
@@ -39,8 +59,8 @@
                             <blockquote>11/07/2019</blockquote>
                             <figcaption>- Elaijah Bisimwa -</figcaption>
                         </figure>
-                            <button class="btn_request acc_btn">Accept</button>
-                            <button class="btn_request den_btn">Decline</button>
+                            <button data-modal-target="#modal" class="btn_request acc_btn" onclick="warn()">Accept</button>
+                            <button data-modal-target="#modalDec" class="btn_request den_btn">Decline</button>
                     </li>
 
                     <li class="user_request">
@@ -49,8 +69,8 @@
                             <blockquote>17/07/2019</blockquote>
                             <figcaption>- Geremiah Luna -</figcaption>
                         </figure>
-                            <button class="btn_request acc_btn">Accept</button>
-                            <button class="btn_request den_btn">Decline</button>
+                            <button data-modal-target="#modal" class="btn_request acc_btn">Accept</button>
+                            <button data-modal-target="#modalDec" class="btn_request den_btn">Decline</button>
                     </li>
                 </ul>
                 <ul class="mod_request">
@@ -60,26 +80,21 @@
                             <blockquote>11/07/2019</blockquote>
                             <figcaption>- Elaijah Bisimwa -</figcaption>
                         </figure>
-                            <button class="btn_request acc_btn">Accept</button>
-                            <button class="btn_request den_btn">Decline</button>
+                            <button data-modal-target="#modal" class="btn_request acc_btn">Accept</button>
+                            <button data-modal-target="#modalDec" class="btn_request den_btn">Decline</button>
                     </li>
                     <li class="user_request">
                         <figure>
                             <img src="../UI/IMAGES/user2.png" alt="user testimonial picture">
                             <blockquote>17/07/2019</blockquote>
-                            <figcaption>- Geremiah Luna -</figcaption>
+                            <figcaption>- Geremiah Lina -</figcaption>
                         </figure>
-                            <button class="btn_request acc_btn">Accept</button>
-                            <button class="btn_request den_btn">Decline</button>
+                            <button data-modal-target="#modal" class="btn_request acc_btn">Accept</button>
+                            <button data-modal-target="#modalDec" class="btn_request den_btn">Decline</button>
                     </li>
                 </ul>
             
         </div>
-    </div>
-
-    <div class="container">
-        <h2>Start your free trial now!</h2>
-        <a href="signup.html" class="cta">Get Started</a>
     </div>
 
     <footer>
@@ -91,7 +106,7 @@
                 <p class="address">Kist Andela, 90210<br>Kigali</p>
                 <ul class="footer-links">
                     <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Service Policy</a></li>
+                    <li><a href="#">Rwanda std</a></li>
                 </ul>
                 
             </div>
@@ -100,5 +115,6 @@
     </footer>
 
     <script src="../UI/JS/Editor.js"></script>
+    <script src="../UI/JS/popupp.js"></script>
 </body>
 </html>
