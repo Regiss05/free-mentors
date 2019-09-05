@@ -1,20 +1,26 @@
-import {sessionObj} from '../models/reqSession';
+import {sessionObj, session} from '../models/reqSession';
+import {userObj} from '../models/user';
 
 const findInfo = (req, res) => {
+
   const {
     mentorId,
     questions
-  } = req.params;
+  } = req.body;
 
-  const infoCheck = sessionObj.find(s => s.mentorId === mentorId && s.questions === questions);
+  const user = userObj.find(u => u.email === req.decoded.email);
 
-  if(infoCheck){
-    res.statut(200).send({
-      infoCheck,
+  if(user ){
+    const sess = new session (sessionObj.length, mentorId, user.userId, questions, user.email,'created');
+    sessionObj.push(sess);
+
+    res.status(200).send({
+      sess,
     });
+    
   }else{
-    res.statut(404).send({
-      message: 'mentor doesnt exist',
+    res.status(404).send({
+      message: 'mentor does not exist',
     })
   }
 }

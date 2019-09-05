@@ -4,6 +4,9 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import router from './server/v1/routes/route';
 import Portconfig from './server/v1/config/PortConfig';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 // eslint-disable-next-line camelcase
@@ -19,10 +22,11 @@ app.use(bodyParser.json());
 // API Routes initialized
 app.use('/api/v1/', router);
 
+app.get('/', (req, res) => res.status(200).send({
+  status:200,
+  message: 'Welcom to free-mentor ship'
+}));
 
-// Home page route
-
-// eslint-disable-next-line consistent-return
 app.use((err, req, res, next) => {
   if (err) {
     return res.status(500).json({
@@ -34,7 +38,6 @@ app.use((err, req, res, next) => {
 
 // read the ported opened
 app.listen(port, () => {
-  // eslint-disable-next-line no-console
   console.log(`Server now listening at localhost:${port}`);
 });
 
