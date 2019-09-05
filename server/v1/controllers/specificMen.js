@@ -7,8 +7,14 @@ const findMenId = (req, res, next) => {
   
   let menId = mentorObj.findIndex(m => m.mentorId.toString() === mentorId);
   
+  if(menId < 0){
+    res.status(404).send({
+      message: 'mentor not found',
+    });
+  }
+
   if(menId >= 0){
-    return res.status(200).send({
+    return res.send({
       data:mentorObj[menId],
     })
   }

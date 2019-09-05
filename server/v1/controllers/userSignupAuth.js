@@ -8,7 +8,7 @@ const signup = (req, res) => {
     password, 
   } = req.body;
   
-  if(firstName && lastName && email && password){
+  if(!(firstName || lastName || email || password)){
 
     const myuser = new user(
       userObj.length, 
