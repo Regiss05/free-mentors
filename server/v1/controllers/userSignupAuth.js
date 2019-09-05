@@ -25,7 +25,7 @@ const signup = (req, res) => {
       myuser,
     })
   }else{
-    res.send({
+    res.status(409).send({
       message:'not created',
     })
   }
