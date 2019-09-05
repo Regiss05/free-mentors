@@ -22,7 +22,11 @@ const signup = (req, res) => {
   if(myuser){
     res.status(201).send({
       message: 'User created successfully',
-      myuser,
+      data: {
+        userId: myuser.userId,
+        email: myuser.email,
+        token: myuser.token
+      }
     })
   }else{
     res.status(409).send({

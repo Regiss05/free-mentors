@@ -8,6 +8,7 @@ import findUserId from '../controllers/adminChange';
 import findInfo from '../controllers/sessionRequest';
 import decodeToken from '../helpers/decodeToken';
 import {acceptSession,rejectSession} from '../controllers/updateSession';
+import checkAdmin from '../helpers/checkAdmin';
 
 const router = express.Router();
 
@@ -16,7 +17,7 @@ router.post('/signup', signupMiddleware, userSignupAuth);
 router.get('/mentors', mentorsView);
 router.get('/specMentor/:mentorId',specifMentor);
 router.patch('/adminChange/:userId', findUserId);
-router.post('/session', decodeToken, findInfo);
+router.post('/session', decodeToken, checkAdmin, findInfo);
 router.patch('/sessions/:sessionId/accept', acceptSession);
 router.patch('/sessions/:sessionId/reject', rejectSession);
 

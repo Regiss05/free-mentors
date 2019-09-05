@@ -5,13 +5,11 @@ const findMenId = (req, res, next) => {
     mentorId,
   } = req.params;
   
-
+  let menId = mentorObj.findIndex(m => m.mentorId.toString() === mentorId);
   
-  let menId = mentorObj.findIndex(m => m.mentorId === mentorId);
-  
-  if(menId){
+  if(menId >= 0){
     return res.send({
-      mentorObj,
+      data:mentorObj[menId],
     })
   }
   next();

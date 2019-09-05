@@ -12,8 +12,12 @@ const login = (req, res, next) => {
       userObj[user.userId - 1].token = createToken(email);
       res.status(200).send({
         message : 'User is successfully logged in',
-        user,
-      })
+        data: {
+          userId: user.userId,
+          email: user.email,
+          token: user.token
+        }
+      });
     }
     else {
       res.status(401).send({
