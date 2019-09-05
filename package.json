@@ -7,7 +7,7 @@
       "@babel/register"
     ],
     "sourcemap": false,
-    "instrument": false
+    "instrument": true
   },
   "scripts": {
     "start": "babel-node app.js",
