@@ -2,21 +2,7 @@ language:
   - node_js
 
 node_js: 
-  - v10.16.2
+  - node
+  - 'lts/*'
 cash: 
   - npm
-
-install:
-  - npm ci
-
-script:
-  - npm test
-  - npm run build
-
-deploy:
-  - provider: pages
-  - skip-cleanup: true
-  - github-token: $GITHUB-TOKEN
-
-  on:
-    branch: gh-pages
