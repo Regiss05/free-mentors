@@ -7,7 +7,7 @@
       "@babel/register"
     ],
     "sourcemap": false,
-    "instrument": false
+    "instrument": true
   },
   "scripts": {
     "start": "babel-node app.js",
@@ -34,8 +34,7 @@
     "jsonwebtoken": "^8.5.1",
     "mocha": "^6.2.0",
     "mocha-lcov-reporter": "^1.3.0",
-    "morgan": "~1.9.1",
-    "nyc": "^14.1.1"
+    "morgan": "~1.9.1"
   },
   "devDependencies": {
     "eslint": "^6.2.1",
