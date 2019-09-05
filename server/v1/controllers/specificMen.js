@@ -5,6 +5,8 @@ const findMenId = (req, res, next) => {
     mentorId,
   } = req.params;
   
+
+  
   let menId = mentorObj.findIndex(m => m.mentorId === mentorId);
   
   if(menId){
