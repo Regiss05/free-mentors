@@ -1,6 +1,7 @@
 import chai, { assert } from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../../app';
+import app from '../../app';
+import {userObj} from '../models/user';
 
 chai.use(chaiHttp);
 
@@ -27,16 +28,18 @@ describe ('user view specific', () => {
       });
   });
 });
-//................................................................. 
+
 describe ('session request', () => {
   it('should have 200 as status when user create a session', (done) => {
     chai.request(app)
       .post('/api/v1/session')
+      .set('Authorization', userObj[0].token)
       .send({
-        
+        mentorId: 1,
+        question: 'session'
       })
       .end((err, res) => {
-        chai.expect(res.status).to.equal(500);
+        chai.expect(res.status).to.equal(200);
         done();
       })
   });

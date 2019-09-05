@@ -1,6 +1,6 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../../app';
+import app from '../../app';
 
 chai.use(chaiHttp);
 
@@ -39,8 +39,7 @@ describe('login', () => {
       })
       .end((err, res)=>{
         chai.expect(res.status).to.equal(200);
-        chai.expect(res.body.user.email).to.equal('lenovo@lemoisson.com');
-        chai.expect(res.body.user.password).to.equal('rec')
+        chai.expect(res.body.data.email).to.equal('lenovo@lemoisson.com');
         done();
       });
   })
@@ -52,7 +51,10 @@ describe('singup', () => {
     chai.request(app)
       .post('/api/v1/signup')
       .send({
+        firstName: 'kikombe',
+        lastName: 'registe',
         email: 'goodPass@gmail.com',
+        password: 'pol'
       })
       .end((err, res) => {
         chai.expect(res.status).to.equal(201);
@@ -71,6 +73,18 @@ describe('singup', () => {
       .end((err, res) => {
         chai.expect(res.status).to.equal(409);
         chai.expect(res.body).to.have.property('message');
+        done();
+      })
+  });
+
+  it('should have 404 as status when there is an empty field', (done) => {
+    chai.request(app)
+      .post('/api/v1/signup')
+      .send({
+        email: ' ',
+      })
+      .end((err, res) => {
+        chai.expect(res.status).to.equal(404);
         done();
       })
   });

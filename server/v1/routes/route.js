@@ -16,8 +16,8 @@ router.post('/signin', userLoginAuth);
 router.post('/signup', signupMiddleware, userSignupAuth);
 router.get('/mentors', mentorsView);
 router.get('/specMentor/:mentorId',specifMentor);
-router.patch('/adminChange/:userId', findUserId);
-router.post('/session', decodeToken, checkAdmin, findInfo);
+router.patch('/adminChange/:userId',decodeToken, checkAdmin, findUserId);
+router.post('/session', decodeToken, findInfo);
 router.patch('/sessions/:sessionId/accept', acceptSession);
 router.patch('/sessions/:sessionId/reject', rejectSession);
 
