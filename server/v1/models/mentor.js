@@ -1,5 +1,5 @@
 export class mentor{
-  constructor(mentorId, firstName, lastName, email, password, address, bio, occupation, expertise){
+  constructor(mentorId, firstName, lastName, email, password, address, bio, occupation, expertise, userId){
     this.mentorId = mentorId,
     this.firstName = firstName,
     this.lastName = lastName,
@@ -8,7 +8,8 @@ export class mentor{
     this.address = address,
     this.bio = bio,
     this.occupation = occupation,
-    this.expertise = expertise
+    this.expertise = expertise,
+    this.userId = userId
   }
 
 }
@@ -17,6 +18,7 @@ const obj = new mentor(
   1,
   'hp',
   'pavillon',
+  'men',
   'hppavillon@gmail.com',
   '16gbram',
   'kigali',
