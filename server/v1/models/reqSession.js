@@ -1,6 +1,6 @@
 export class session{
   constructor(sessionId, mentorId, menteeId, questions, menteeEMail, status){
-    this.mentorId = sessionId,
+    this.sessionId = sessionId,
     this.mentorId = mentorId,
     this.menteeId = menteeId,
     this.questions = questions,
@@ -10,7 +10,7 @@ export class session{
 }
 
 const obj = new session(
-  1,
+  1, 
   1,
   1,
   'Request has been sent',
