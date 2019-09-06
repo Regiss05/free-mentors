@@ -10,9 +10,12 @@
     "instrument": true
   },
   "scripts": {
-    "start": "babel-node app.js",
-    "start-dev": "nodemon --exec babel-node app.js",
-    "dev": "cross-env NODE_ENV=development nodemon app.js",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./server -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/app.js",
+    "start-dev": "nodemon --exec babel-node ./server/app.js",
+    "dev": "cross-env NODE_ENV=development nodemon ./server/app.js",
     "coverage": "nyc --reporter=lcov --reporter=text-summary npm test",
     "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha --exit server/v1/tests/*js"
   },

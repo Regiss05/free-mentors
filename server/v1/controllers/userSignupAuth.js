@@ -6,23 +6,26 @@ const signup = (req, res) => {
     lastName, 
     email,  
     password, 
-    confPassword
   } = req.body;
   
+
   const myuser = new user(
     userObj.length, 
     email,
     firstName,
     lastName,
     password,
-    confPassword,
   );
 
   userObj.push( myuser);
   if(myuser){
     res.status(201).send({
       message: 'User created successfully',
-      myuser,
+      data: {
+        userId: myuser.userId,
+        email: myuser.email,
+        token: myuser.token
+      }
     })
   }else{
     res.status(409).send({

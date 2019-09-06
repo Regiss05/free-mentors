@@ -1,21 +1,12 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../../app';
+import app from '../../app';
 
 chai.use(chaiHttp);
 
 describe('login', () => {
-  it('should have 400 as status when empty data provided', (done)=>{
-    chai.request(app)
-      .post('/api/v1/signin')
-      .send('')
-      .end((err, res)=>{
-        chai.expect(res.status).to.equal(400);
-        done();
-      });
-  })
 
-  it('should have 401 as status when correct data', (done)=>{
+  it('should have 401 as status when incorrect data', (done)=>{
     chai.request(app)
       .post('/api/v1/signin')
       .send({
@@ -39,8 +30,7 @@ describe('login', () => {
       })
       .end((err, res)=>{
         chai.expect(res.status).to.equal(200);
-        chai.expect(res.body.user.email).to.equal('lenovo@lemoisson.com');
-        chai.expect(res.body.user.password).to.equal('rec')
+        chai.expect(res.body.data.email).to.equal('lenovo@lemoisson.com');
         done();
       });
   })
@@ -52,12 +42,14 @@ describe('singup', () => {
     chai.request(app)
       .post('/api/v1/signup')
       .send({
+        firstName: 'kikombe',
+        lastName: 'registe',
         email: 'goodPass@gmail.com',
+        password: 'pol'
       })
       .end((err, res) => {
         chai.expect(res.status).to.equal(201);
         chai.expect(res.body).to.have.an('object')
-        chai.expect(res.body).to.have.property('message');
         done();
       });
   });

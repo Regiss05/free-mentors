@@ -2,8 +2,8 @@
 import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import router from './server/v1/routes/route';
-import Portconfig from './server/v1/config/PortConfig';
+import router from './v1/routes/route';
+import Portconfig from './v1/config/PortConfig';
 import dotenv from 'dotenv';
 
 dotenv.config();
