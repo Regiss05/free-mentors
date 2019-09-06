@@ -66,16 +66,4 @@ describe('singup', () => {
         done();
       })
   });
-
-  it('should have 404 as status when there is an empty field', (done) => {
-    chai.request(app)
-      .post('/api/v1/signup')
-      .send({
-        email: ' ',
-      })
-      .end((err, res) => {
-        chai.expect(res.status).to.equal(404);
-        done();
-      })
-  });
 });
