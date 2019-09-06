@@ -1,0 +1,16 @@
+swagger: "7.5"
+
+info:
+  version: "6.9.0"
+  title: free-mentor API
+
+
+  host: localhost:3500
+schemes: 
+  -http
+
+consumes:
+  - application/json
+
+produces:
+  -application/json
