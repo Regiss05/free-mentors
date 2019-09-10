@@ -72,7 +72,7 @@ Tools used for development of this API are;
 
 ## Api Documentation
 
-Get started with WayFarer Api endpoints documentation [here](https: .............).
+Get started with free-mentors Api endpoints documentation [here](https: Swagger).
 
 ## Key Contributor
 
