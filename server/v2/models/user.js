@@ -1,16 +1,18 @@
 import createToken from '../helpers/createToken';
+import pool from '../config/dbconfig';
 
 
 export class user {
-  constructor(userId, email, firstName, lastName, password, isAdmin, isMentor){
-    this.userId = userId,
-    this.email = email,
-    this.firstName = firstName,
-    this.lastName = lastName,
-    this.password = password, 
-    this.isAdmin = isAdmin,
-    this.isMentor = isMentor,
-    this.token = createToken(email);
+  async save(user){
+    const {userName, password, email, isMentor} = user;
+
+    const queryString = {
+      text: `INSERT INTO users (userName, password, email, isMentor)
+      VALUES($1, $2, $3, $4) RETURNING*;`
+      values: [userName, password, email, isMentor]
+    };
+    const { rows } = await pool.query(queryString);
+    return rows
   }
 }
 

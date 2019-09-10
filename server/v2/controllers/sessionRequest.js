@@ -1,5 +1,6 @@
 import {sessionObj, session} from '../models/reqSession';
 import {userObj} from '../models/user';
+import responseFormatter from '../helpers/responseFormatter';
 
 const findInfo = (req, res) => {
 
@@ -13,15 +14,9 @@ const findInfo = (req, res) => {
   if(user ){
     const sess = new session (sessionObj.length, mentorId, user.userId, questions, user.email,'created');
     sessionObj.push(sess);
-
-    res.status(200).send({
-      sess,
-    });
-    
+    return responseFormatter(res,200,'mentorship created',sess,false);
   }else{
-    res.status(404).send({
-      message: 'mentor does not exist',
-    })
+    return responseFormatter(res,409,'mentorship not created',true);
   }
 }
 

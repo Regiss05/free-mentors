@@ -1,12 +1,16 @@
-import { Pool, client } from "pg";
+import {Pool,Client} from 'pg';
 
-const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'postgres',
-    password: '199814M@r$',
-    port: 5432
-}); 
+const Pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'usersdb',
+  password: '199814M@r$',
+  port: 5432
+});
 
-pool.query('SELECT ')
 
+
+Pool.query('SELECT NOW()', (err, res) => {
+    console.log(err, res);
+    Pool(end);
+});

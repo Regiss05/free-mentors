@@ -1,4 +1,5 @@
 import {mentorObj} from '../models/mentor';
+import responseFormatter from '../helpers/responseFormatter'
 
 const findMenId = (req, res, next) => {
   const{
@@ -8,15 +9,15 @@ const findMenId = (req, res, next) => {
   let menId = mentorObj.findIndex(m => m.mentorId.toString() === mentorId);
   
   if(menId < 0){
-    res.status(404).send({
-      message: 'mentor not found',
-    });
+    return responseFormatter(res,404,'mentor not found',true)
   }
 
   if(menId >= 0){
-    return res.send({
-      data:mentorObj[menId],
-    })
+    return responseFormatter(res,200,'mentor details',false,
+     {
+       data:mentorObj[menId],
+     }
+    )
   }
   next();
 }
