@@ -10,7 +10,6 @@ const checkUserExist = (req, res, next) => {
     
   if(myuser){
     return res.status(409).send({
-      status: 409,
       message: 'mail already used by another person',
     })
   }

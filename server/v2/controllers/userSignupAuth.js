@@ -1,5 +1,4 @@
 import {userObj, user} from '../models/user';
-import responseFormatter from "../helpers/responseFormatter";
 
 const signup = (req, res) => {
   const {
@@ -20,9 +19,18 @@ const signup = (req, res) => {
 
   userObj.push( myuser);
   if(myuser){
-    return responseFormatter(res,201,'User created',myuser,false);
+    res.status(201).send({
+      message: 'User created successfully',
+      data: {
+        userId: myuser.userId,
+        email: myuser.email,
+        token: myuser.token
+      }
+    })
   }else{
-    return responseFormatter(res,409,'User not created',data,true)
+    res.status(409).send({
+      message:'not created',
+    })
   }
 }
 export default signup;

@@ -1,20 +1,17 @@
 import {sessionObj} from '../models/reqSession';
-import responseFormatter from '../helpers/responseFormatter';
-import { Session } from 'inspector';
 
 function updateSession(req, res, state){
   const {sessionId} = req.params;
   const session = sessionObj.findIndex(s => s.sessionId.toString() === sessionId);
   if(session > -1){
     sessionObj[session].status = state;
-    return responseFormatter(res,200,'session created',false,
-    {
-      mysession: sessionObj[Session]
-    }  
-    
-    );
+    res.status(200).send({
+      mySession: sessionObj[session],
+    });
   } else {
-    return responseFormatter(res,404,'session error',data,true);
+    res.status(404).send({
+      message: 'Session error',
+    });
   }
     
 }
