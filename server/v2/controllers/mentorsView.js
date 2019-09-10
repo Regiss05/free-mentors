@@ -1,5 +1,4 @@
 import {mentorObj} from '../models/mentor';
-import responseFormatter from '../helpers/responseFormatter';
 
 const mentors = (req, res) => {
   const ments=[];
@@ -15,7 +14,10 @@ const mentors = (req, res) => {
       menExpe: element.expertise
     })
   })
-  responseFormatter(res,200,'all mentors',{data:ments},false);
+  res.status(200).send({
+    message: 'You can view all mentors',
+    data:ments
+  })
 }
 
 export default mentors;

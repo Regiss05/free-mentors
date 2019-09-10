@@ -1,6 +1,5 @@
 import {userObj} from '../models/user';
 import {mentorObj, mentor} from '../models/mentor';
-import responseFormatter from '../helpers/responseFormatter';
 
 const findUserId = (req, res) => {
   const {
@@ -13,11 +12,13 @@ const findUserId = (req, res) => {
     const myuser = userObj[userIndex];
     const ment = new mentor(mentorObj.length,myuser.firstName,myuser.lastName,myuser.email,myuser.address,myuser.bio,myuser.occupation,myuser.expertise,myuser.userId);
     mentorObj.push(ment);
-
-    return responseFormatter(res,200,'user account change to mentor',ment,false);
-    
+    res.status(200).send(
+      ment
+    );
   } else {
-    return responseFormatter(res,409,'account not changed',true);
+    res.status(404).send({
+      Message: 'user doenst exist',
+    });
   }
 }
 
