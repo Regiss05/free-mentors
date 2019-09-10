@@ -13,7 +13,7 @@ const findMenId = (req, res, next) => {
   }
 
   if(menId >= 0){
-    return responseFormatter(res,200,'mentor details',false,
+    return responseFormatter(res,200,'mentor details',data,false,
      {
        data:mentorObj[menId],
      }

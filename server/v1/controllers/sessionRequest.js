@@ -16,7 +16,7 @@ const findInfo = (req, res) => {
     sessionObj.push(sess);
     return responseFormatter(res,200,'mentorship created',sess,false);
   }else{
-    return responseFormatter(res,409,'mentorship not created',true);
+    return responseFormatter(res,409,'mentorship not created',data,true);
   }
 }
 

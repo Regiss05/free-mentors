@@ -14,7 +14,7 @@ function updateSession(req, res, state){
     
     );
   } else {
-    return responseFormatter(res,404,'session error',true);
+    return responseFormatter(res,404,'session error',data,true);
   }
     
 }
