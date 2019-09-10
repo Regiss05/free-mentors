@@ -22,7 +22,7 @@ const signup = (req, res) => {
   if(myuser){
     return responseFormatter(res,201,'User created',myuser,false);
   }else{
-    return responseFormatter(res,409,'User not created',true)
+    return responseFormatter(res,409,'User not created',data,true)
   }
 }
 export default signup;

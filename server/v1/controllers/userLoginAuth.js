@@ -1,5 +1,5 @@
 import {userObj} from '../models/user';
-import createToken from '../helpers/createToken';
+import createToken from '../middlewares/createToken';
 import responseFormatter from "../helpers/responseFormatter";
 
 const login = (req, res, next) => {
@@ -20,7 +20,7 @@ const login = (req, res, next) => {
     )
   }
   else {
-    return responseFormatter(res,401,'Wrong email or password',true);
+    return responseFormatter(res,401,'Wrong email or password',data,true);
   }
 }
 
