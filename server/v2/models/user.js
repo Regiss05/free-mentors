@@ -1,3 +1,4 @@
+
 import createToken from '../helpers/createToken';
 import Model from '../models/index';
 import pool from '../config/dbConfig';
@@ -29,7 +30,6 @@ class userModel extends Model{
     const {rows} = await pool.query(queryString);
     return rows[0]
   }
-
   async userExist(email){
     const queryString = {
       text = `SELECT email FROM users WHERE email = $1`,
@@ -42,27 +42,3 @@ class userModel extends Model{
 
 } 
 
-
-
-// export class user {
-//   constructor(userId, email, firstName, lastName, password, isAdmin, isMentor){
-//     this.userId = userId,
-//     this.email = email,
-//     this.firstName = firstName,
-//     this.lastName = lastName,
-//     this.password = password, 
-//     this.isAdmin = isAdmin,
-//     this.isMentor = isMentor,
-//     this.token = createToken(email);
-//   }
-// }
-
-// const obj = new user(
-//   1,
-//   'lenovo@lemoisson.com',
-//   'lenovo',
-//   'thinkpad',
-//   'rec',
-// )
-
-// export const userObj = [obj];

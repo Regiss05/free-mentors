@@ -3,6 +3,7 @@ import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import router from './v1/routes/route';
+import routerV2 from './v2/routes/route';
 import Portconfig from './v1/config/PortConfig';
 import dotenv from 'dotenv';
 
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 
 // API Routes initialized
 app.use('/api/v1/', router);
+app.use('/api/v2/', routerV2);
 
 app.get('/', (req, res) => res.status(200).send({
   status:200,

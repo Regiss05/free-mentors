@@ -14,7 +14,7 @@ const findInfo = (req, res) => {
   if(user ){
     const sess = new session (sessionObj.length, mentorId, user.userId, questions, user.email,'created');
     sessionObj.push(sess);
-    return responseFormatter(res,201,'mentorship created',sess,false);
+    return responseFormatter(res,200,'mentorship created',sess,false);
   }else{
     return responseFormatter(res,409,'mentorship not created',data,true);
   }

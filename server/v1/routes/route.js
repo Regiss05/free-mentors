@@ -6,7 +6,7 @@ import express from 'express';
 import specifMentor from '../controllers/specificMen';
 import findUserId from '../controllers/adminChange';
 import findInfo from '../controllers/sessionRequest';
-import decodeToken from '../helpers/decodeToken';
+import decodeToken from '../middlewares/decodeToken';
 import {acceptSession,rejectSession} from '../controllers/updateSession';
 
 const router = express.Router();
