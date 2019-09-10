@@ -1,3 +1,4 @@
 node_modules
-.nyc_outputssss
 coverage
+.nyc_outputssss
+.coveralls.yml
