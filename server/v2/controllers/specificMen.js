@@ -11,9 +11,7 @@ export function specifmentor(req, res){
   pool.query(specificmentorQuery([req.params.mentorId]))
   .then((result) => {
     if(result > 0){
-      return responseFormatter(res,200,'user details', mentArray,false);
+      return responseFormatter(res,200,'user details', result,false);
     }
-  }).catch((err) => {
-    return responseFormatter(res,404,'mentor not found', data, true);
   });
 }
