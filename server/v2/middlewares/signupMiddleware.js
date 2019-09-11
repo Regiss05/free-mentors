@@ -9,10 +9,7 @@ const checkUserExist = (req, res, next) => {
   let myuser = userObj.find(u => u.email === email);
     
   if(myuser){
-    return res.status(409).send({
-      status: 409,
-      message: 'mail already used by another person',
-    })
+    return responseFormatter(res,409,'mail already used by another person', data,true)
   }
   next();   
 }

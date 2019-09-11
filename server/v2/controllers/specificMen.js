@@ -1,5 +1,6 @@
 import {mentorObj} from '../models/mentor';
 import responseFormatter from '../helpers/responseFormatter'
+import queries from '../models/queries'
 
 const findMenId = (req, res, next) => {
   const{
