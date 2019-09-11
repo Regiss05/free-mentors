@@ -85,3 +85,8 @@ export const systemAdminDB = `CREATE TABLE public.users (
         text: 'update users set ismentor = \'true\' where email = $1 returning',
         values,
     });
+
+    export const setUserTokenQuery = values => ({
+        text: 'update users set token=$1 where email=$2',
+        values,
+      });
