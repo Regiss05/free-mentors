@@ -1,9 +1,8 @@
-import { comparePassword } from '../helper/hashPassword';
+import { comparePassword } from '../helpers/hashPassword';
 import { getSigninQuery, setUserTokenQuery } from '../models/Queries';
 import pool from '../config/dbConfig';
 import createToken from '../middlewares/createToken';
 import responseFormatter from '../helpers/responseFormatter';
-import user from '../models/user'
 
 export default function login(req, res) {
   const { email, password } = req.body;
