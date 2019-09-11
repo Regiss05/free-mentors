@@ -1,27 +1,41 @@
-import {userObj} from '../models/user';
-import createToken from '../helpers/createToken';
-import responseFormatter from "../helpers/responseFormatter";
+import { comparePassword } from '../helper/hashPassword';
+import { getSigninQuery, setUserTokenQuery } from '../models/Queries';
+import pool from '../config/dbConfig';
+import createToken from '../middlewares/createToken';
+import responseFormatter from '../helpers/responseFormatter';
+import user from '../models/user'
 
-const login = (req, res, next) => {
+export default function login(req, res) {
+  const { email, password } = req.body;
 
-  const {email, password} = req.body;
-
-  const user = userObj.find(u => u.email === email && u.password === password);
- 
-  if(user){
-    userObj[user.userId - 1].token = createToken(email);
-
-    return responseFormatter(res,200,'User is successfully logged in',false,
-     {
-          userId: user.userId,
-          email: user.email,
-          token: user.token
+  const userDataArray = [email];
+  pool.query(getSigninQuery(userDataArray))
+    .then((result) => {
+      if (result.rowCount > 0) {
+        const user = result.rows[0];
+        if (user && comparePassword(password, user.password)) {
+          user.token = createToken(email);
+          delete user.password;
+          pool.query(setUserTokenQuery([user.token, user.email])).catch((err) => {
+            return responseFormatter(res,401,'Wrong email or password',data,true);
+          });
+          return responseFormatter(res,200,'User is successfully logged in',false,
+              {
+                    userId: user.userId,
+                    email: user.email,
+                    token: user.token
+                }
+              )
+        } else {
+          return responseFormatter(res,401,'Wrong email or password',data,true);
+        }
+      } else {
+        return responseFormatter(res,401,'Wrong email or password',data,true);
       }
-    )
-  }
-  else {
-    return responseFormatter(res,401,'Wrong email or password',true);
-  }
+    })
+    .catch((err) => {
+      return responseFormatter(res,401,'Wrong email or password',data,true);
+    });
+  return res;
 }
 
-export default login;
