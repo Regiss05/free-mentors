@@ -1,26 +1,17 @@
 import {mentorObj} from '../models/mentor';
 import responseFormatter from '../helpers/responseFormatter'
-import queries from '../models/queries'
+import specificmentorQuery from '../models/queries'
+import config from '../config/dbConfig'
 
-const findMenId = (req, res, next) => {
-  const{
-    mentorId,
-  } = req.params;
-  
-  let menId = mentorObj.findIndex(m => m.mentorId.toString() === mentorId);
-  
-  if(menId < 0){
-    return responseFormatter(res,404,'mentor not found',true)
-  }
+export function specifmentor(req, res){
+  const {email, firstName, LastName} = req.params;
 
-  if(menId >= 0){
-    return responseFormatter(res,200,'mentor details',false,
-     {
-       data:mentorObj[menId],
-     }
-    )
-  }
-  next();
+  const mentArray = [email, firstName, LastName];
+
+  pool.query(specificmentorQuery([req.params.mentorId]))
+  .then((result) => {
+    if(result > 0){
+      return responseFormatter(res,200,'user details', result,false);
+    }
+  });
 }
-
-export default findMenId;
