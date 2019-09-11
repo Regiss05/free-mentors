@@ -6,6 +6,8 @@ import router from './v1/routes/route';
 import routerV2 from './v2/routes/route';
 import Portconfig from './v1/config/PortConfig';
 import dotenv from 'dotenv';
+import pool from '../server/v2/config/dbConfig'
+import {systemAdminDB} from '../server/v2/models/queries'
 
 dotenv.config();
 
@@ -41,6 +43,12 @@ app.use((err, req, res, next) => {
 // read the ported opened
 app.listen(port, () => {
   console.log(`Server now listening at localhost:${port}`);
+});
+
+pool.query(systemAdminDB).then(res =>{
+  console.log(res);
+}).catch(err =>{
+  console.log(err);
 });
 
 export default app;

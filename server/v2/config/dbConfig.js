@@ -1,6 +1,8 @@
-import {Pool,Client} from 'pg';
+// import {Pool} from 'pg';
 
-const Pool = new Pool({
+const {Pool} = require('pg');
+
+  let pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'usersdb',
@@ -10,7 +12,9 @@ const Pool = new Pool({
 
 
 
-Pool.query('SELECT NOW()', (err, res) => {
+pool.query('SELECT NOW()', (err, res) => {
     console.log(err, res);
-    Pool(end);
+    
 });
+
+module.exports = pool;
