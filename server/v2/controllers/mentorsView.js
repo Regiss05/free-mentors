@@ -1,21 +1,23 @@
 import {mentorObj} from '../models/mentor';
+import pool from '../config/dbConfig';
+import {getMentorQuery} from '../models/queries';
 import responseFormatter from '../helpers/responseFormatter';
 
-const mentors = (req, res) => {
-  const ments=[];
-  mentorObj.forEach(element => {
-    ments.push({
-      menId: element.mentorId,
-      mentFN: element.firstName,
-      menLN: element.lastName,
-      menMail: element.email,
-      menAddress: element.address,
-      menBio : element.bio,
-      menOcc : element.occupation,
-      menExpe: element.expertise
-    })
-  })
-  responseFormatter(res,200,'all mentors',{data:ments},false);
-}
+export function mentors (req, res) {
+    const {mentorId, firstName, lastName, email, address, bio, occupation, expertise} = req.body;
+    
+    const ments=[mentorId, firstName, lastName, email, address, bio, occupation, expertise];
 
-export default mentors;
+    pool.query(getMentorQuery(ments))
+    .then((result) => {
+        if(result > 0){
+            return responseFormatter(res, 201, 'All mentors', ments, false);
+        }
+    }).catch((err) => {
+        if(res <= 0){
+            return responseFormatter(res, 404, 'no mentor found', data, true);
+        }
+    });
+  }
+  
+  export default mentors;

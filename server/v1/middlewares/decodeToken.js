@@ -6,17 +6,12 @@ export default function checkAdmin (req, res, next) {
   if(token){
     jwt.verify(token, 'secret', (err, decoded) => {
       if(err) {
-        res.statut(401).send({
-          message: 'Unauthorized token'
-        })
+        return responseFormatter(res,401,'Unauthorized token', data,true)
       }
       req.decoded = decoded;
       next();
     });
   } else{
-
-    res.statut(401).send({
-      message: 'Unauthorized token'
-    });
+    return responseFormatter(res,401,'Unauthorized token', data,true)
   }
 }
