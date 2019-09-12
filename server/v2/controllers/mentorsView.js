@@ -6,17 +6,14 @@ import responseFormatter from '../helpers/responseFormatter';
 export function mentors (req, res) {
     const {mentorId, firstName, lastName, email, address, bio, occupation, expertise} = req.body;
     
-    const ments=[mentorId, firstName, lastName, email, address, bio, occupation, expertise];
-
-    pool.query(getMentorQuery(ments))
+  
+    pool.query(getMentorQuery())
     .then((result) => {
-        if(result > 0){
-            return responseFormatter(res, 201, 'All mentors', ments, false);
-        }
+     return responseFormatter(res, 200, 'All mentors', result.rows, false);
     }).catch((err) => {
-        if(res <= 0){
-            return responseFormatter(res, 404, 'no mentor found', data, true);
-        }
+    
+     return responseFormatter(res, 404, 'no mentor found', undefined, true);
+       
     });
   }
   

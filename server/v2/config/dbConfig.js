@@ -1,6 +1,5 @@
-// import {Pool} from 'pg';
+import {Pool} from 'pg';
 
-const {Pool} = require('pg');
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -19,4 +18,4 @@ else { pool = new Pool({
 }
 
 
-module.exports = pool;
+export default pool;
