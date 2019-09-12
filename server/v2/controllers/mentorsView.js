@@ -8,15 +8,13 @@ export function mentors (req, res) {
     
     const ments=[mentorId, firstName, lastName, email, address, bio, occupation, expertise];
 
-    pool.query(getMentorQuery(ments))
+    pool.query(getMentorQuery())
     .then((result) => {
-        if(result > 0){
-            return responseFormatter(res, 201, 'All mentors', ments, false);
-        }
-    }).catch((err) => {
-        if(res <= 0){
+        
+            return responseFormatter(res, 200, 'All mentors', result.rows, false);
+        
+    }).catch((err) => {      
             return responseFormatter(res, 404, 'no mentor found', data, true);
-        }
     });
   }
   

@@ -1,17 +1,21 @@
-import {mentorObj} from '../models/mentor';
+import pool  from '../config/dbConfig';
 import responseFormatter from '../helpers/responseFormatter'
-import specificmentorQuery from '../models/queries'
+import {specificmentorQuery} from '../models/queries'
 import config from '../config/dbConfig'
 
-export function specifmentor(req, res){
-  const {email, firstName, LastName} = req.params;
+export default function specifmentor(req, res){
+  const {mentorId} = req.params;
 
-  const mentArray = [email, firstName, LastName];
-
-  pool.query(specificmentorQuery([req.params.mentorId]))
+  pool.query(specificmentorQuery([mentorId]))
   .then((result) => {
-    if(result > 0){
-      return responseFormatter(res,200,'user details', result,false);
+    if(result.rowCount > 0){
+      delete result.rows[0].password;
+      return responseFormatter(res,200,'user details', result.rows[0],false);
+    } else {
+      return responseFormatter(res,404,'mentor not found', undefined, true);
+
     }
+  }).catch((err) => {
+    return responseFormatter(res,404,'mentor not found', undefined, true);
   });
 }

@@ -7,4 +7,9 @@ node_js:
 cash: 
   - npm
 
-after_success: npm run coverage
+after_success: npm run coverage 
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+

@@ -17,7 +17,7 @@
     "start-dev": "nodemon --exec babel-node ./server/app.js",
     "dev": "cross-env NODE_ENV=development nodemon ./server/app.js",
     "coverage": "nyc --reporter=lcov --reporter=text-summary npm test",
-    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha --exit server/v1/tests/*js"
+    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha --exit server/v2/tests/*js"
   },
   "dependencies": {
     "@babel/cli": "^7.5.5",
@@ -34,6 +34,7 @@
     "debug": "~2.6.9",
     "dotenv": "^8.1.0",
     "express": "~4.16.1",
+    "heroku": "^7.29.0",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^6.2.0",
     "mocha-lcov-reporter": "^1.3.0",
