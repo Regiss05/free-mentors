@@ -13,7 +13,6 @@ export default function specifmentor(req, res){
       return responseFormatter(res,200,'user details', result.rows[0],false);
     } else {
       return responseFormatter(res,404,'mentor not found', undefined, true);
-
     }
   }).catch((err) => {
     return responseFormatter(res,404,'mentor not found', undefined, true);

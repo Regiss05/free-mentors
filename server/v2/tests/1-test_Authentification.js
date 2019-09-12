@@ -3,6 +3,7 @@ import chaiHttp from 'chai-http';
 import app from '../../app';
 import createToken from '../middlewares/createToken';
 
+
 chai.use(chaiHttp);
 
 describe('singup', () => {
@@ -11,11 +12,11 @@ describe('singup', () => {
     chai.request(app)
       .post('/api/v2/signup')
       .send({
-        firstName: 'kikombe',
+        firstName: 'rams',
         lastName: 'registe',
-        email: 'goodPass@gmail.com',
+        email: 'goodpass@gmail.com',
         password: 'pol',
-        isAdmin: 'true'
+        isAdmin: 'false'
       })
       .end((err, res) => {
         chai.expect(res.status).to.equal(201);
@@ -30,8 +31,8 @@ describe('singup', () => {
       .send({
         firstName: 'kikombe',
         lastName: 'registe',
-        email: 'goodPass@gmail.com',
-        password: 'pol',
+        email: 'goodpass@gmail.com',
+        password: '15423',
         isAdmin: 'true'
       })
       .end((err, res) => {
@@ -62,14 +63,28 @@ describe('login', () => {
     chai.request(app)
       .post('/api/v2/signin')
       .send({
-        email: 'goodPass@gmail.com',
+        email: 'goodpass@gmail.com',
         password: 'pol'
       })
       .end((err, res)=>{
         chai.expect(res.status).to.equal(200);
-        chai.expect(res.body.data.email).to.equal('goodPass@gmail.com');
+        chai.expect(res.body.data.email).to.equal('goodpass@gmail.com');
         done();
       });
   })
+});
+
+describe('Admin', () => {
+  it ('should have 200 when change user to mentor', (done) => {
+    chai.request(app)
+    .patch('/api/v2/adminChange/4')
+    .set('Authorization', createToken('goodpass@gmail.com',true))
+    .end((err, res) => {
+      chai.expect(res.status).to.equal(200);
+      chai.expect(res.body).to.be.an('object');
+      chai.expect(res.body).to.have.property('message');
+      (done);
+    }); 
+  });
 });
 
