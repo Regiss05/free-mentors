@@ -7,7 +7,8 @@ function updateSession(req, res, state){
   const session = sessionObj.findIndex(s => s.sessionId.toString() === sessionId);
   if(session > -1){
     sessionObj[session].status = state;
-    return responseFormatter(res,200,'session created',false,
+
+    return responseFormatter(res,200,'session accepted',false,
     {
       mysession: sessionObj[Session]
     }  
