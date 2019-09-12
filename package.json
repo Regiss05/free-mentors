@@ -17,7 +17,8 @@
     "start-dev": "nodemon --exec babel-node ./server/app.js",
     "dev": "cross-env NODE_ENV=development nodemon ./server/app.js",
     "coverage": "nyc --reporter=lcov --reporter=text-summary npm test",
-    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha --exit server/v2/tests/*js"
+    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha --exit server/v2/tests/*js",
+    "createTables": "npm run build && node ./server/v2/models/queries.js"
   },
   "dependencies": {
     "@babel/cli": "^7.5.5",
