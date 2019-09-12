@@ -1,15 +1,19 @@
-import pool from '../../v2/config/dbConfig'
-import { updateSession } from '../../v2/models/queries'
-import responseFormatter from '../helpers/responseFormatter'
+import {updateSession} from '../models/queries';
+import pool from '../config/dbConfig';
+import responseFormatter  from '../helpers/responseFormatter';
 
 function updateSessionF(req, res, state){
   const {sessionId} = req.params;
-  pool.query(updateSession([state, sessionId])).then(result =>{
-    return responseFormatter(res,200,'session created', result.rows, false);  
+
+  pool.query(updateSession([state, sessionId])).then(result => {
+    if(result.rowCount > 0){
+      return responseFormatter(res,200,'session accepted',result.rows[0], false);
+    } else {
+      return responseFormatter(res,404,'session error',true);
+    }
   }).catch(err => {
-    return responseFormatter(res,404,'session error',undefined, true);
-  })
-    
+    return responseFormatter(res,404,'session error',true);
+  });
 }
 
 export function acceptSession(req, res){

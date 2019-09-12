@@ -1,20 +1,21 @@
-// import {Pool} from 'pg';
+import {Pool} from 'pg';
 
-const {Pool} = require('pg');
+import dotenv from 'dotenv';
 
-  let pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'usersdb',
-  password: '199814M@r$',
-  port: 5432
+dotenv.config();
+let pool = new Pool();
+if (process.env.NODE_ENV === 'test') {
+  pool = new Pool ({
+  user : process.env.userTest,
+  database : process.env.databaseTest,
+  password : process.env.passwordTest,
+  host: process.env.hostTest,
+  });
+}
+else { pool = new Pool({
+    connectionString : process.env.DATABASE_URL,
 });
+}
 
 
-
-pool.query('SELECT NOW()', (err, res) => {
-    console.log(err, res);
-    
-});
-
-module.exports = pool;
+export default pool;

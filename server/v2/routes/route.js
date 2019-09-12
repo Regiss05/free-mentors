@@ -20,4 +20,6 @@ router.post('/session', decodeToken, findInfo);
 router.patch('/sessions/:sessionId/accept', decodeToken, acceptSession);
 router.patch('/sessions/:sessionId/reject', decodeToken, rejectSession);
 
+
+
 export default router;

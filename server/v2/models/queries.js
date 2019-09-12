@@ -58,7 +58,7 @@ export const systemAdminDB = `CREATE TABLE public.users (
     });
 
     export const specificmentorQuery = values => ({
-        text: 'select ismentor from users where email = $1 and ismentor=true',
+        text: 'select * from users, mentor where mentorid = $1 ',
         values,
     });
 

@@ -30,7 +30,7 @@ const signup = (req, res) => {
     if (err.constraint === 'users_email_key' || (err.routine && err.routine === '_bt_check_unique')) {
       
       return responseFormatter(res,409,'User not created', undefined,false);
-    } 
+    }
   })
 }
 
