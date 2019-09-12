@@ -1,19 +1,18 @@
-import {mentorObj} from '../models/mentor';
+import pool from '../../v2/config/dbConfig'
+import { getSpecificMentorQuery } from '../../v2/models/queries'
 import responseFormatter from '../helpers/responseFormatter'
-import specificmentorQuery from '../models/queries'
-import config from '../config/dbConfig'
 
-export function specifmentor(req, res){
-  const {email, firstName, LastName} = req.params;
-
-  const mentArray = [email, firstName, LastName];
-
-  pool.query(specificmentorQuery([req.params.mentorId]))
-  .then((result) => {
-    if(result > 0){
-      return responseFormatter(res,200,'user details', mentArray,false);
-    }
-  }).catch((err) => {
-    return responseFormatter(res,404,'mentor not found', data, true);
-  });
+const findMenId = (req, res, next) => {
+  const{
+    mentorId,
+  } = req.params;
+  
+  pool.query(getSpecificMentorQuery([mentorId])).then(result => {
+    if(result.rowCount > 0) return responseFormatter(res,200,'mentor details',result.rows[0],false);
+    else return responseFormatter(res,404,'mentor not found');
+  }).catch(err => {
+    return responseFormatter(res,404,'mentor not found');
+  })
 }
+
+export default findMenId;
