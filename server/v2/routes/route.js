@@ -17,7 +17,7 @@ router.get('/mentors', mentorsView);
 router.get('/specMentor/:mentorId',specifMentor);
 router.patch('/adminChange/:userId',decodeToken, findUserId);
 router.post('/session', decodeToken, findInfo);
-router.patch('/sessions/:sessionId/accept', acceptSession);
-router.patch('/sessions/:sessionId/reject', rejectSession);
+router.patch('/sessions/:sessionId/accept', decodeToken, acceptSession);
+router.patch('/sessions/:sessionId/reject', decodeToken, rejectSession);
 
 export default router;

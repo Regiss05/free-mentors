@@ -1,23 +1,25 @@
-import {sessionObj, session} from '../models/reqSession';
-import {userObj} from '../models/user';
+import pool from '../config/dbConfig';
+import {addSession, getCurrentSession} from '../models/queries';
 import responseFormatter from '../helpers/responseFormatter';
 
 const findInfo = (req, res) => {
 
   const {
-    mentorId,
-    questions
+    mentorid, questions
   } = req.body;
 
-  const user = userObj.find(u => u.email === req.decoded.email);
+pool.query(getCurrentSession([req.decoded.email])).then(resu => {
+  if(resu.rowCount < 1){
 
-  if(user ){
-    const sess = new session (sessionObj.length, mentorId, user.userId, questions, user.email,'created');
-    sessionObj.push(sess);
-    return responseFormatter(res,200,'mentorship created',sess,false);
-  }else{
-    return responseFormatter(res,409,'mentorship not created',true);
-  }
+  pool.query(addSession([mentorid, req.decoded.email, questions, 'created'])).then(result => {
+    if(result.rowCount > 0) return responseFormatter(res,200,'mentorship created',result.rows[0],false);
+    else  return responseFormatter(res,400,'mentorship not created',undefined,true);
+  }).catch(err => {
+    return responseFormatter(res,400,'mentorship not created',undefined,true);
+  })
+} else {
+  return responseFormatter(res,403,'You have an ongoing session',undefined,true);
+}})
 }
 
 export default findInfo;
