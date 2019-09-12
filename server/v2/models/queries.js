@@ -1,8 +1,8 @@
 export const systemAdminDB = `CREATE TABLE public.users ( 
     userid serial PRIMARY KEY,
     email varchar(50) unique,
-    firstName varchar(30),
-    lastLame varchar(30), 
+    firstname varchar(30),
+    lastname varchar(30), 
     password text,  
     isAdmin boolean,
     isMentor boolean,
@@ -20,15 +20,10 @@ export const systemAdminDB = `CREATE TABLE public.users (
 
     CREATE TABLE mentor (
         mentorId serial PRIMARY KEY,
-        firstName varchar(50),
-        lastName varchar(50),
-        email varchar(50) unique,
-        password varchar(50),
-        address varchar(50),
         bio varchar(50),
         occupation varchar(50),
         expertise varchar(50),
-        userid integer,
+        userid integer unique,
 
         CONSTRAINT user_fk FOREIGN KEY (userid)
         REFERENCES public.users (userid) MATCH SIMPLE
@@ -38,7 +33,7 @@ export const systemAdminDB = `CREATE TABLE public.users (
     `
 
     export const getSignupQuery = values => ({
-        text: 'INSERT INTO users (token,email,firstName, lastName, password, isAdmin, isMentor) values($1,$2,$3,$4,$5,$6,$7) RETURNING id',
+        text: 'INSERT INTO users (token,email,firstName, lastName, password, isAdmin, isMentor) values($1,$2,$3,$4,$5,$6,$7) RETURNING *',
         values,
     });
 
@@ -48,12 +43,12 @@ export const systemAdminDB = `CREATE TABLE public.users (
     });
 
     export const getMentorQuery = values => ({
-        text: 'select * from mentor',
+        text: 'select * from mentor, users where users.userid = mentor.userid',
         values,
     });
 
     export const getSpecificMentorQuery = values => ({
-        text: 'select * from mentor where id = $1',
+        text: 'select * from mentor, users where mentorid = $1 and users.userid = mentor.userid',
         values,
     });
 
@@ -62,7 +57,7 @@ export const systemAdminDB = `CREATE TABLE public.users (
         values,
     });
 
-    export const isspecificmentorQuery = values => ({
+    export const specificmentorQuery = values => ({
         text: 'select ismentor from users where email = $1 and ismentor=true',
         values,
     });
@@ -81,12 +76,39 @@ export const systemAdminDB = `CREATE TABLE public.users (
         values,
     });
 
-    export const adminchangeQuery = values => ({
-        text: 'update users set ismentor = \'true\' where email = $1 returning',
+    export const setMentorQuery = values => ({
+        text: 'update users set ismentor = true where userid=$1 returning *',
         values,
     });
+
+    export const addMentorQuery = values => ({
+        text: 'insert into mentor (bio, occupation, expertise, userid) values ($1, $2, $3, $4) returning *',
+        values,
+    })
 
     export const setUserTokenQuery = values => ({
         text: 'update users set token=$1 where email=$2',
         values,
       });
+
+    export const addSession  =  values => ({
+        text:  'insert into reqsession (mentorid, menteeemail, questions, status) values($1, $2, $3, $4) returning * ',
+        values,
+    });
+    export const updateSession = values => ({
+        text: 'update reqsession set status = $1 where sessionid =$2 returning *',
+        values,
+    })
+    export const getCurrentSession = values => ({
+        text: 'select * from reqsession where menteeemail = $1',
+        values,
+    });
+    export const deleteTestUser = values => ({
+        text: 'delete from users where email = \'goodPass@gmail.com\'',
+        values,
+    });
+    export const deleteSessions = values => ({
+        text: 'delete from reqsession where menteeemail = \'goodPass@gmail.com\'',
+        values,
+    });
+      
