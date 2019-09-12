@@ -7,9 +7,7 @@ node_js:
 cash: 
   - npm
 
-after_success: npm run coverage
-env:
-  - userTest = postgres databaseTest = travis_ci_test passwordTest = 
+after_success: npm run coverage 
 services:
   - postgresql
 before_script:
