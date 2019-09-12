@@ -1,24 +1,26 @@
-import {userObj} from '../models/user';
-import {mentorObj, mentor} from '../models/mentor';
+import pool from '../config/dbConfig';
+import {addMentorQuery, setMentorQuery} from '../models/queries';
 import responseFormatter from '../helpers/responseFormatter';
 
 const findUserId = (req, res) => {
   const {
     userId,
   } = req.params;
-
-  const userIndex = userObj.findIndex(u => u.userId.toString() === userId);
-  if(userIndex >= 0){
-    userObj[userIndex].isMentor = true;
-    const myuser = userObj[userIndex];
-    const ment = new mentor(mentorObj.length,myuser.firstName,myuser.lastName,myuser.email,myuser.address,myuser.bio,myuser.occupation,myuser.expertise,myuser.userId);
-    mentorObj.push(ment);
-
-    return responseFormatter(res,200,'user account change to mentor',ment,false);
-    
-  } else {
-    return responseFormatter(res,409,'account not changed',true);
-  }
+  const { bio, occupation, expertise} = req.body;
+  if(!req.decoded.isAdmin) return responseFormatter(res,401,'Unauthorized token', undefined,true);
+  pool.query(setMentorQuery([userId])).then(result => {
+    if(result.rowCount > 0){
+      pool.query(addMentorQuery([ bio, occupation, expertise, userId])).then(result2 => {
+        if(result2.rowCount > 0)  return responseFormatter(res,200,'user account change to mentor',result2.rows[0],false);
+        else{
+           return responseFormatter(res,409,'account not changed');
+        }
+      })
+    } else {
+      return responseFormatter(res,409,'account not changed');
+    }
+  }).catch(err => {
+    return responseFormatter(res,409,'account not changed');
+  })
 }
-
 export default findUserId;

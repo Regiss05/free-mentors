@@ -1,6 +1,6 @@
 node_modules
 coverage
-.nyc_outputs
+.nyc_output
 .coveralls.yml
 build
 

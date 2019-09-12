@@ -8,3 +8,10 @@ cash:
   - npm
 
 after_success: npm run coverage
+env:
+  - userTest = postgres databaseTest = travis_ci_test passwordTest = 
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+
