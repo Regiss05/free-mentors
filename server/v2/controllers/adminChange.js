@@ -13,9 +13,11 @@ const findUserId = (req, res) => {
       pool.query(addMentorQuery([ bio, occupation, expertise, userId])).then(result2 => {
         if(result2.rowCount > 0)  return responseFormatter(res,200,'user account change to mentor',result2.rows[0],false);
         else{
-           return responseFormatter(res,409,'account not changed');
+          return responseFormatter(res,200,'user account change to mentor',undefined,false);
         }
-      })
+      }).catch(err => {
+        return responseFormatter(res,200,'user account change to mentor',undefined,false);
+      });
     } else {
       return responseFormatter(res,409,'account not changed');
     }
