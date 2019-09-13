@@ -7,12 +7,12 @@ function updateSessionF(req, res, state){
 
   pool.query(updateSession([state, sessionId])).then(result => {
     if(result.rowCount > 0){
-      return responseFormatter(res,200,'session accepted',result.rows[0], false);
+      return responseFormatter(res,200,`session ${state}`,result.rows[0], false);
     } else {
-      return responseFormatter(res,404,'session error',true);
+      return responseFormatter(res,404,'session error');
     }
   }).catch(err => {
-    return responseFormatter(res,404,'session error',true);
+    return responseFormatter(res,404,'session error');
   });
 }
 
