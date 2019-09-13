@@ -19,7 +19,7 @@
     "coverage": "nyc --reporter=lcov --reporter=text-summary npm test",
     "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha --exit server/v2/tests/*js",
     "createTables": "npm run build && node ./server/v2/models/queries.js"
-  },
+  },   
   "dependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",

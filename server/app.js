@@ -10,7 +10,7 @@ import {systemAdminDB} from '../server/v2/models/queries'
 dotenv.config();
 
 const app = express();
-// eslint-disable-next-line camelcase
+// eslint-disable-next-line
 
 // port configuration imported
 const  port  = process.env.PORT || 4500;
