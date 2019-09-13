@@ -4,8 +4,8 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import routerV2 from './v2/routes/route';
 import dotenv from 'dotenv';
-import pool from '../server/v2/config/dbConfig'
-import {systemAdminDB} from '../server/v2/models/queries'
+import pool from './v2/config/dbConfig'
+import {systemAdminDB} from './v2/models/queries'
 
 dotenv.config();
 
