@@ -1,28 +1,24 @@
-import {sessionObj} from '../models/reqSession';
-import responseFormatter from '../helpers/responseFormatter';
-import { Session } from 'inspector';
+import {updateSession} from '../models/queries';
+import pool from '../config/dbConfig';
+import responseFormatter  from '../helpers/responseFormatter';
 
-function updateSession(req, res, state){
+function updateSessionF(req, res, state){
   const {sessionId} = req.params;
-  const session = sessionObj.findIndex(s => s.sessionId.toString() === sessionId);
-  if(session > -1){
-    sessionObj[session].status = state;
 
-    return responseFormatter(res,200,'session accepted',false,
-    {
-      mysession: sessionObj[Session]
-    }  
-    
-    );
-  } else {
+  pool.query(updateSession([state, sessionId])).then(result => {
+    if(result.rowCount > 0){
+      return responseFormatter(res,200,'session accepted',result.rows[0], false);
+    } else {
+      return responseFormatter(res,404,'session error',true);
+    }
+  }).catch(err => {
     return responseFormatter(res,404,'session error',true);
-  }
-    
+  });
 }
 
 export function acceptSession(req, res){
-  updateSession(req, res, 'accepted');
+  updateSessionF(req, res, 'accepted');
 }
 export function rejectSession(req, res){
-  updateSession(req, res, 'rejected');
+  updateSessionF(req, res, 'rejected');
 }
