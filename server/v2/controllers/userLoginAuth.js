@@ -1,5 +1,5 @@
 import { comparePassword } from '../helpers/hashPassword';
-import { getSigninQuery, setUserTokenQuery } from '../models/Queries';
+import { getSigninQuery, setUserTokenQuery } from '../models/queries';
 import pool from '../config/dbConfig';
 import createToken from '../middlewares/createToken';
 import responseFormatter from '../helpers/responseFormatter';
