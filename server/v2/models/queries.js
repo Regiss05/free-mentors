@@ -104,11 +104,14 @@ export const systemAdminDB = `CREATE TABLE public.users (
         values,
     });
     export const deleteTestUser = values => ({
-        text: 'delete from users where email = \'goodPass@gmail.com\'',
+        text: 'delete from users where email = \'goodpass@gmail.com\'',
         values,
     });
     export const deleteSessions = values => ({
-        text: 'delete from reqsession where menteeemail = \'goodPass@gmail.com\'',
+        text: 'delete from reqsession where menteeemail = \'goodpass@gmail.com\'',
         values,
     });
+   
+   
+
       
