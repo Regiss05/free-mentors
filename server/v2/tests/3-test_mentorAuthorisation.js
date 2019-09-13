@@ -10,7 +10,7 @@ describe('Mentor settings', () => {
   it ('mentor accept request', (done) => {
     chai.request(app)
       .patch('/api/v2/sessions/1/accept')
-      .set('Authorization', createToken('goodPass@gmail.com', true))
+      .set('Authorization', createToken('goodpass@gmail.com', true))
       .send({
         sessionId: 1
       })
@@ -24,15 +24,16 @@ describe('Mentor settings', () => {
   it ('mentor reject request', (done) => {
     chai.request(app)
       .patch('/api/v2/sessions/1/reject')
-      .set('Authorization', createToken('goodPass@gmail.com', true))
+      .set('Authorization', createToken('goodpass@gmail.com', true))
       .send({
         sessionId: 1
       })
       .end((err, res) => {
         chai.expect(res.status).to.equal(200);
         chai.expect(res.body).to.have.an('object');
+
         pool.query(deleteTestUser()).then(res =>{
-          pool.query(deleteSessions());
+        pool.query(deleteSessions());
         });
         
         done();

@@ -10,7 +10,7 @@ const signup = (req, res) => {
     firstName, 
     lastName, 
     email,  
-    password, 
+    password,
     isAdmin
   } = req.body;
 
@@ -24,7 +24,7 @@ const signup = (req, res) => {
   .then(result => {
     if(result.rowCount > 0){
     delete result.rows[0].password;
-    return responseFormatter(res,201,'User created', result.rows,false);
+    return responseFormatter(res,201,'User created', result.rows[0],false);
     }
   }).catch((err) => {
     if (err.constraint === 'users_email_key' || (err.routine && err.routine === '_bt_check_unique')) {

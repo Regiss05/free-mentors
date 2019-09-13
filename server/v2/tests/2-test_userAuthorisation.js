@@ -34,7 +34,7 @@ describe ('session request', () => {
   it('should have 200 as status when user create a session', (done) => {
     chai.request(app)
       .post('/api/v2/session')
-      .set('Authorization', createToken('goodPass@gmail.com', true) )
+      .set('Authorization', createToken('goodpass@gmail.com', true) )
       .send({
         mentorId: 1,
         question: 'session'
